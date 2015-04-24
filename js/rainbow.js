@@ -171,6 +171,9 @@ window['Rainbow'] = (function() {
      * @returns {string}
      */
     function _htmlEntities(code) {
+        //kevin修正 用rich editor編輯的code會有 <p>標籤的問題
+        code = code.replace(new RegExp('<p>','g'),'');
+        code = code.replace(new RegExp('</p>','g'),'');
         return code.replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/&(?![\w\#]+;)/g, '&amp;');
     }
 
